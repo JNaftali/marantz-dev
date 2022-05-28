@@ -22,7 +22,6 @@
     "typecheck": "tsc -b && tsc -b cypress",
     "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run"
   },
-  "prettier": {},
   "eslintIgnore": [
     "/node_modules",
     "/build",
@@ -35,6 +34,7 @@
     "@remix-run/serve": "^1.5.1",
     "@remix-run/server-runtime": "^1.5.1",
     "bcryptjs": "^2.4.3",
+    "classnames": "^2.3.1",
     "postcss-modules": "^4.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -85,6 +85,10 @@
   "prisma": {
     "seed": "ts-node --require tsconfig-paths/register prisma/seed.ts"
   },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
   "volta": {
     "node": "16.15.0",
     "npm": "8.11.0"

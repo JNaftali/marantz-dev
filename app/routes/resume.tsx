@@ -1,5 +1,6 @@
 import type { LinksFunction } from '@remix-run/node';
 import { forwardRef } from 'react';
+import cn from 'classnames';
 import styles from '../styles/resume.css';
 
 export function meta() {
@@ -19,18 +20,16 @@ export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: styles }];
 };
 
-function classList(...classes: (string | null | undefined | false)[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
+/* eslint-disable jsx-a11y/anchor-has-content */
 const Link = forwardRef<HTMLAnchorElement, React.HTMLProps<HTMLAnchorElement>>((props, ref) => (
   <a
     ref={ref}
     target="_blank"
     {...props}
-    className={classList(props.className, props.children === props.href && 'dont-append-link')}
+    className={cn(props.className, { 'dont-append-link': props.children === props.href })}
   />
 ));
+/* eslint-enable jsx-a11y/anchor-has-content */
 
 export default function Resume() {
   return (

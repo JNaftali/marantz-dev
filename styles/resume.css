@@ -1,0 +1,51 @@
+main {
+  padding: 0 max(1em, (100vw - 100ch) / 2);
+}
+
+h1 {
+  text-align: center;
+}
+
+aside dl {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+aside div > * {
+  display: inline;
+}
+
+aside dd {
+  margin-left: 0;
+}
+
+aside dt::after {
+  content: ': ';
+}
+
+.project {
+  margin-top: 1em;
+}
+
+@media print {
+  a {
+    color: inherit;
+  }
+
+  a:not(.dont-append-link)::after {
+    content: '(' attr(href) ')';
+
+    /* 
+            Hide the underline. doesn't work without display (https://stackoverflow.com/a/15688237)
+            then couldn't insert a space, thus padding
+        */
+    text-decoration: none;
+    display: inline-block;
+    padding-left: 0.5ch;
+  }
+
+  .page-break {
+    break-before: page;
+  }
+}

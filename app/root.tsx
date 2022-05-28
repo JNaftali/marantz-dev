@@ -7,9 +7,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { useShouldHydrate } from "remix-utils";
+
+import global from "./styles/global.css";
 
 export const links: LinksFunction = () => {
-  return [];
+  return [{ href: global, rel: "stylesheet" }];
 };
 
 export const meta: MetaFunction = () => ({
@@ -28,7 +31,7 @@ export default function App() {
       <body>
         <Outlet />
         <ScrollRestoration />
-        <Scripts />
+        {useShouldHydrate() && <Scripts />}
         <LiveReload />
       </body>
     </html>

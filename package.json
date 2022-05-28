@@ -10,7 +10,7 @@
     "dev:css": "npm run generate:css -- --watch",
     "dev:remix": "cross-env NODE_ENV=development binode --require ./mocks -- @remix-run/dev:remix dev",
     "format": "prettier --write .",
-    "generate:css": "tailwindcss -o ./app/styles/tailwind.css",
+    "generate:css": "echo \"no styles yet\"",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "setup": "prisma migrate dev && prisma db seed",
     "start": "remix-serve build",
@@ -35,6 +35,7 @@
     "@remix-run/serve": "^1.5.1",
     "@remix-run/server-runtime": "^1.5.1",
     "bcryptjs": "^2.4.3",
+    "postcss-modules": "^4.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tiny-invariant": "^1.2.0"
@@ -65,11 +66,10 @@
     "msw": "^0.40.2",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
+    "postcss-preset-env": "^7.6.0",
     "prettier": "2.6.2",
-    "prettier-plugin-tailwindcss": "^0.1.11",
     "prisma": "^3.14.0",
     "start-server-and-test": "^1.14.0",
-    "tailwindcss": "^3.0.24",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.6.4",
@@ -78,9 +78,13 @@
     "vitest": "^0.12.8"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "prisma": {
     "seed": "ts-node --require tsconfig-paths/register prisma/seed.ts"
+  },
+  "volta": {
+    "node": "16.15.0",
+    "npm": "8.11.0"
   }
 }

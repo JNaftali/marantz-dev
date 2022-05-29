@@ -1,20 +1,20 @@
-import type { LinksFunction } from '@remix-run/node';
+import type { LinksFunction, HeadersFunction, MetaFunction } from '@remix-run/node';
 import { forwardRef } from 'react';
 import cn from 'classnames';
 import styles from '../styles/resume.css';
 
-export function meta() {
+export const meta: MetaFunction = () => {
   return {
     title: "Josh Marantz's Resume",
   };
-}
+};
 
-export function headers() {
+export const headers: HeadersFunction = () => {
   return {
     'cache-control': 's-maxage=604800',
     'X-Robots-Tag': 'noindex',
   };
-}
+};
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: styles }];

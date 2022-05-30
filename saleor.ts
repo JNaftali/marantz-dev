@@ -31,6 +31,7 @@ export async function getProduct(slug?: string) {
     gql`
       query ProductDetail($slug: String!) {
         product(slug: $slug) {
+          id
           name
         }
       }

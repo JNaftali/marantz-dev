@@ -13983,8 +13983,8 @@ export type GridProductsQueryVariables = Exact<{ [key: string]: never; }>;
 export type GridProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductCountableConnection', edges: Array<{ __typename?: 'ProductCountableEdge', node: { __typename?: 'Product', id: string, name: string, slug: string } }> } | null };
 
 export type ProductDetailQueryVariables = Exact<{
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
 }>;
 
 
-export type ProductDetailQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string } | null };
+export type ProductDetailQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string } | null };

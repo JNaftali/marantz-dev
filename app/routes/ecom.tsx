@@ -6,7 +6,13 @@ export default function Ecom() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Back</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="products">Product grid</Link>
+          </li>
+          <li>
+            <Link to="cart">Cart</Link>
           </li>
         </ul>
       </nav>

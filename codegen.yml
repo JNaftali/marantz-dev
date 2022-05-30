@@ -1,0 +1,11 @@
+overwrite: true
+schema: 'https://laaurora.saleor.cloud/graphql/'
+documents: './saleor.ts'
+generates:
+  generated/graphql.d.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+  ./generated/graphql.schema.json:
+    plugins:
+      - 'introspection'

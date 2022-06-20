@@ -6,6 +6,7 @@ const { getSession, commitSession } = createCookieSessionStorage({
     path: '/ecom',
     httpOnly: true,
     sameSite: true,
+    secrets: [process.env.SESSION_SECRET ?? 'sekret'],
   },
 });
 

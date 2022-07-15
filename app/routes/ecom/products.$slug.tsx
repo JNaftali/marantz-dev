@@ -1,15 +1,15 @@
-import { DataFunctionArgs, json, redirect } from '@remix-run/node';
+import { LoaderArgs, ActionArgs, json, redirect } from '@remix-run/node';
 import { useFetcher, useLoaderData } from '@remix-run/react';
 import { getProduct } from 'saleor';
 import { withCart } from '~/ecom/cookies';
 
-export async function loader({ params }: DataFunctionArgs) {
+export async function loader({ params }: LoaderArgs) {
   return json({
     product: await getProduct(params.slug),
   });
 }
 
-export async function action({ request, params }: DataFunctionArgs) {
+export async function action({ request, params }: ActionArgs) {
   const formData = Object.fromEntries(await request.formData());
   assertIsNormalForm(formData);
   switch (formData.intent) {
@@ -45,10 +45,8 @@ interface AddToCartForm extends BaseFormSubmission {
 
 type FormSubmission = AddToCartForm;
 
-type LoaderData = { product: Awaited<ReturnType<typeof getProduct>> };
-
 export default function ProductPage() {
-  const { product } = useLoaderData<LoaderData>();
+  const { product } = useLoaderData<typeof loader>();
   const addToCart = useFetcher();
   return (
     <main>

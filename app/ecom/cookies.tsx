@@ -1,4 +1,5 @@
 import { createCookieSessionStorage, Session } from '@remix-run/node';
+import { TypedResponse } from '@remix-run/server-runtime';
 
 const { getSession, commitSession } = createCookieSessionStorage({
   cookie: {
@@ -10,7 +11,10 @@ const { getSession, commitSession } = createCookieSessionStorage({
   },
 });
 
-export async function withCart(request: Request, f: (cart: Session) => Promise<Response>) {
+export async function withCart<T>(
+  request: Request,
+  f: (cart: Session) => Promise<TypedResponse<T>>,
+) {
   const session = await getSession(request.headers.get('Cookie'));
   const response = await f(session);
 

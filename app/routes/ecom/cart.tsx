@@ -1,20 +1,19 @@
-import { DataFunctionArgs, json } from '@remix-run/node';
+import { LoaderArgs, json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { withCart } from '~/ecom/cookies';
 
-export function loader({ request }: DataFunctionArgs) {
+export async function loader({ request }: LoaderArgs) {
   return withCart(request, async (cart) => {
-    const cartItems = cart.has('cartItems') ? cart.get('cartItems') : [];
+    const cartItems = (cart.has('cartItems') ? cart.get('cartItems') : []) as Array<{
+      id: string;
+      quantity: number;
+    }>;
     return json({ cartItems });
   });
 }
 
-type LoaderData = {
-  cartItems: { id: string; quantity: number }[];
-};
-
 export default function CartPage() {
-  const { cartItems } = useLoaderData<LoaderData>();
+  const { cartItems } = useLoaderData<typeof loader>();
 
   return (
     <main>
